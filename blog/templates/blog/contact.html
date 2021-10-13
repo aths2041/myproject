@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %} {% load static %}
+{% block contactactive %} active {% endblock contactactive %}
+
+
+{% block msg %} {% if messages %} {% for message in messages %}
+<div {% if message.tags %} class="alert alert-{{message.tags}} mb-5 alert-dismissible fade show" {% endif %}>
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+</div>
+{% endfor %} {% endif %} {% endblock msg %}
+
+
+{% block content %}
+
+<div class="col-sm-10">
+    <h3 class="text-white mt-5">Contact Page</h3>
+    <form class="form-row container" method="post" action="/contact/">
+    {% csrf_token %}
+        <div>
+            <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="type your name here">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com">
+            </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number (with country code):</label>
+            <input type="phone" class="form-control" name="phone" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="3" class="form-control" name="message" placeholder="type your comment here"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %} {% load static %} 
+ {% block homeactive %}active{% endblock homeactive %}
+{% block content %}
+
+
+<div class="col-sm-20 mb-5">
+    <h3 class="text-white my-5">Home Page</h3>
+
+    <div class="container mb-3">
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-lg-3 p-3 my-2 ms-3 bg-gradient shadow">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{post.post_image.url}}" alt="" class="img-top" height="jumbotron jumbotron-fluid">
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <h5 class="card-title">{{post.title_tag}}</h5>
+                        <h class="card-text">{{post.desc|safe| truncatechars:50 }}</h>
+                        <div class="card-footer">
+                            <small>{{post.post_date}}</small>
+                        </div>
+                        <a href="/blog/{{post.slug}}" class="btn btn-primary">read more...</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

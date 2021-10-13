@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %} {% load static %} 
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid bg-gradient shadow my-5">
+  <h2 class="blog-post-title">{{post.title}}</h2>
+  <p class="blog-post-meta">{{post.timeStamp}}
+    <a><strong> Article by -{{post.author}}</strong></a>
+    </p>
+    <img src="{{post.post_image.url}}" alt="" class="img-top" height="200px">
+    <h5 class="card-title">{{post.title_tag}}</h5>
+    <h>{{post.desc|safe}}</h>
+  <hr>
+
+</div>
+<div class="container">
+
+{% endblock content %}
